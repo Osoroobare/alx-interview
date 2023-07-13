@@ -9,7 +9,6 @@ Module for minimum operations
 def minOperations(n):
     """Gets fewest number of operations needed
     """
-#All outputs should be atleast two chars
     ans = 0
     a = 2
     while n > 1:
