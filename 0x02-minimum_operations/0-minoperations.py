@@ -2,16 +2,19 @@
 
 
 """
-Calculates the minimum operations
+Module for minimum operations
 """
 
 
 def minOperations(n):
-    answer = 0
-    x = 2
+    """Gets fewest number of operations needed
+    """
+#All outputs should be atleast two chars
+    ans = 0
+    a = 2
     while n > 1:
-        while n % x == 0:
-            answer += x
-            n /= x
-        x += 1
-    return answer
+        while n % a == 0:
+            ans += a
+            n /= a
+        a += 1
+    return ans
