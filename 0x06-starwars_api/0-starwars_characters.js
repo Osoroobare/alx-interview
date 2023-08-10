@@ -1,34 +1,22 @@
 #!/usr/bin/node
 
+/*a script that prints all characters of a Star Wars movie:
 
-/*script that prints all characters of a Star Wars movie:*/
-
+The first positional argument passed is the Movie ID - example: 3 = “Return of the Jedi”
+Display one character name per line in the same order as the “characters” list in the /films/ endpoint*/
 
 const request = require('request');
-const movieID = process.argv.slice(2);
-const endpoint = 'https://swapi-api.hbtn.io/api/films/' + movieID;
 
-
-function makeRequest (array, index) {
-  if (index === array.length) {
-    return;
-  }
-
-  request(array[index], (error, response, body) => {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log(JSON.parse(body).name);
-      makeRequest(array, index + 1);
-    }
-  });
-}
-
-request(endpoint, (error, response, body) => {
-  if (error) {
-    console.log(error);
-  } else {
-    const chrList = JSON.parse(body).characters;
-    makeRequest(chrList, 0);
-  }
+request('https://swapi-api.hbtn.io/api/films/' + process.argv[2], function (err, res, body) {
+  if (err) throw err;
+  const actors = JSON.parse(body).characters;
+  exactOrder(actors, 0);
 });
+const exactOrder = (actors, x) => {
+  if (x === actors.length) return;
+  request(actors[x], function (err, res, body) {
+    if (err) throw err;
+    console.log(JSON.parse(body).name);
+    exactOrder(actors, x + 1);
+  });
+};

@@ -1,1 +1,4 @@
-This readme is for 0x06-starwars_api
+## Star Wars Api
+
+## Tasks
+0. Star Wars Characters
