@@ -7,7 +7,8 @@ Display one character name per line in the same order as the “characters” li
 
 const request = require('request');
 
-request('https://swapi-api.hbtn.io/api/films/' + process.argv[2], function (err, res, body) {
+request('https://swapi-api.hbtn.io/api/films/' + process.argv[2], 
+function (err, res, body) {
   if (err) throw err;
   const actors = JSON.parse(body).characters;
   exactOrder(actors, 0);
