@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """ Module for rotating a matrix"""
 
-def rotate_2d_matrix(matrix):
 
+def rotate_2d_matrix(matrix):
 
 
     n = len(matrix)
